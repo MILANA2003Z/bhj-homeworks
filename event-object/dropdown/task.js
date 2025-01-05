@@ -1,4 +1,5 @@
-const dropdowns = document.querySelectorAll('.dropdown');
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(dropdown => {
         const value = dropdown.querySelector('.dropdown__value');
@@ -13,18 +14,17 @@ const dropdowns = document.querySelectorAll('.dropdown');
         // Установка нового значения при выборе пункта меню
         items.forEach(item => {
             item.addEventListener('click', (event) => {
-                event.preventDefault();  // Запрещаем переход по ссылке
+                event.preventDefault();
                 const selectedText = item.textContent.trim();
                 value.textContent = selectedText;
                 list.classList.remove('dropdown__list_active');
             });
-        });
-
+        });  
         // Закрытие списка при клике вне выпадающего меню
         document.addEventListener('click', (event) => {
             if (!dropdown.contains(event.target)) {
                 list.classList.remove('dropdown__list_active');
             }
         });
-    });
+    });  
 });
